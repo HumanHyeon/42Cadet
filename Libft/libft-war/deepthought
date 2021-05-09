@@ -1,0 +1,178 @@
+= Host-specific information ====================================================
+$> hostname; uname -msr
+localhost.localdomain
+Linux 4.18.0-193.14.2.el8_2.x86_64 x86_64
+$> date
+2021. 05. 06. (목) 13:16:22 KST
+$> gcc --version
+gcc (GCC) 8.3.1 20191121 (Red Hat 8.3.1-5)
+Copyright (C) 2018 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+$> clang --version
+
+= libft.h=======================================================================
+$> norminette libft.h | grep -E '(Error|Warning)'
+norminette : command not found
+
+= Compiling libft ==============================================================
+$> make re
+rm -f ft_substr.o
+rm -f libft.a
+gcc -Wall -Wextra -Werror -c ft_substr.c -o ft_substr.o -I libft.h
+cc1: error: libft.h: not a directory [-Werror]
+cc1: all warnings being treated as errors
+make: *** [Makefile:21: ft_substr.o] 오류 1
+
+$> make bonus
+make: *** 타겟 'bonus'을(를) 만들 규칙이 없습니다.  멈춤.
+
+$> ls -la libft.a
+
+= Part1_functions ==============================================================
+
+= ft_memset.c ==================================================================
+Nothing turned in
+
+= ft_bzero.c ===================================================================
+Nothing turned in
+
+= ft_calloc.c ==================================================================
+Nothing turned in
+
+= ft_memcpy.c ==================================================================
+Nothing turned in
+
+= ft_memccpy.c =================================================================
+Nothing turned in
+
+= ft_memmove.c =================================================================
+Nothing turned in
+
+= ft_memchr.c ==================================================================
+Nothing turned in
+
+= ft_memcmp.c ==================================================================
+Nothing turned in
+
+= ft_strlen.c ==================================================================
+Nothing turned in
+
+= ft_strdup.c ==================================================================
+Nothing turned in
+
+= ft_strlcat.c =================================================================
+Nothing turned in
+
+= ft_strlcpy.c =================================================================
+Nothing turned in
+
+= ft_strchr.c ==================================================================
+Nothing turned in
+
+= ft_strrchr.c =================================================================
+Nothing turned in
+
+= ft_strnstr.c =================================================================
+Nothing turned in
+
+= ft_strncmp.c =================================================================
+Nothing turned in
+
+= ft_atoi.c ====================================================================
+Nothing turned in
+
+= ft_isalpha.c =================================================================
+Nothing turned in
+
+= ft_isdigit.c =================================================================
+Nothing turned in
+
+= ft_isalnum.c =================================================================
+Nothing turned in
+
+= ft_isascii.c =================================================================
+Nothing turned in
+
+= ft_isprint.c =================================================================
+Nothing turned in
+
+= ft_toupper.c =================================================================
+Nothing turned in
+
+= ft_tolower.c =================================================================
+Nothing turned in
+
+= Part2_functions ==============================================================
+
+= ft_strmapi.c =================================================================
+Nothing turned in
+
+= ft_substr.c ==================================================================
+$> norminette ft_substr.c | grep -E '(Error|Warning)'
+
+norminette : command not found
+
+$> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_substr.c main.c libft.a -o user_exe
+
+/root/gitFolder/42/Libft/libft-war/srcs/check_compilation.sh: line 22: clang: command not found
+
+= ft_strjoin.c =================================================================
+Nothing turned in
+
+= ft_strtrim.c =================================================================
+Nothing turned in
+
+= ft_split.c ===================================================================
+$> norminette ft_split.c | grep -E '(Error|Warning)'
+
+norminette : command not found
+
+$> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_split.c main.c libft.a -o user_exe
+
+/root/gitFolder/42/Libft/libft-war/srcs/check_compilation.sh: line 22: clang: command not found
+
+= ft_itoa.c ====================================================================
+Nothing turned in
+
+= ft_putchar_fd.c ==============================================================
+Nothing turned in
+
+= ft_putstr_fd.c ===============================================================
+Nothing turned in
+
+= ft_putendl_fd.c ==============================================================
+Nothing turned in
+
+= ft_putnbr_fd.c ===============================================================
+Nothing turned in
+
+= Bonus_functions ==============================================================
+
+= ft_lstnew_bonus.c ============================================================
+Nothing turned in
+
+= ft_lstdelone_bonus.c =========================================================
+Nothing turned in
+
+= ft_lstclear_bonus.c ==========================================================
+Nothing turned in
+
+= ft_lstadd_front_bonus.c ======================================================
+Nothing turned in
+
+= ft_lstadd_back_bonus.c =======================================================
+Nothing turned in
+
+= ft_lstsize_bonus.c ===========================================================
+Nothing turned in
+
+= ft_lstiter_bonus.c ===========================================================
+Nothing turned in
+
+= ft_lstmap_bonus.c ============================================================
+Nothing turned in
+
+= ft_lstlast_bonus.c ===========================================================
+Nothing turned in
