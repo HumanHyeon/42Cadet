@@ -10,10 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdbool.h>
+#include "libft.h"
 
-bool	is_sperator(char c, char *charset)
+static bool	is_sperator(char c, char *charset)
 {
 	int	i;
 
@@ -27,7 +26,7 @@ bool	is_sperator(char c, char *charset)
 	return (false);
 }
 
-int		count_word(char *str, char *charset)
+static int		count_word(char *str, char *charset)
 {
 	int		count;
 	bool	check;
@@ -50,7 +49,7 @@ int		count_word(char *str, char *charset)
 	return (count);
 }
 
-int		find_nextword_location(char *str, char *charset, int *offset)
+static int		find_nextword_location(char *str, char *charset, int *offset)
 {
 	int	index;
 	int	length;
@@ -74,7 +73,7 @@ int		find_nextword_location(char *str, char *charset, int *offset)
 	return (length);
 }
 
-char	*make_word(char *str, int *offset, int length)
+static char	*make_word(char *str, int *offset, int length)
 {
 	char	*word;
 	int		i;

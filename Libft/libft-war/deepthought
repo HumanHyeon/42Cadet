@@ -1,69 +1,336 @@
 = Host-specific information ====================================================
 $> hostname; uname -msr
-localhost.localdomain
-Linux 4.18.0-193.14.2.el8_2.x86_64 x86_64
+c10r3s4.42seoul.kr
+Darwin 19.6.0 x86_64
 $> date
-2021. 05. 06. (목) 13:16:22 KST
+Sat May 15 21:01:57 KST 2021
 $> gcc --version
-gcc (GCC) 8.3.1 20191121 (Red Hat 8.3.1-5)
-Copyright (C) 2018 Free Software Foundation, Inc.
-This is free software; see the source for copying conditions.  There is NO
-warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-
+Apple clang version 12.0.0 (clang-1200.0.32.28)
+Target: x86_64-apple-darwin19.6.0
+Thread model: posix
+InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
 $> clang --version
+Apple clang version 12.0.0 (clang-1200.0.32.28)
+Target: x86_64-apple-darwin19.6.0
+Thread model: posix
+InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
 
 = libft.h=======================================================================
 $> norminette libft.h | grep -E '(Error|Warning)'
-norminette : command not found
 
 = Compiling libft ==============================================================
 $> make re
-rm -f ft_substr.o
+rm -f *.o
 rm -f libft.a
-gcc -Wall -Wextra -Werror -c ft_substr.c -o ft_substr.o -I libft.h
-cc1: error: libft.h: not a directory [-Werror]
-cc1: all warnings being treated as errors
-make: *** [Makefile:21: ft_substr.o] 오류 1
+gcc -Wall -Wextra -Werror -c ft_bzero.c -o *.o -I libft.h
+ar rcs libft.a *.o
 
 $> make bonus
-make: *** 타겟 'bonus'을(를) 만들 규칙이 없습니다.  멈춤.
+make: *** No rule to make target `bonus'.  Stop.
 
 $> ls -la libft.a
+-rw-r--r--  1 sehypark  2021_seoul  888 May 15 21:01 /Users/sehypark/42Cadet/Libft/libft-war/dirlibft/libft.a
 
 = Part1_functions ==============================================================
 
 = ft_memset.c ==================================================================
-Nothing turned in
+$> norminette ft_memset.c | grep -E '(Error|Warning)'
+$> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_memset.c main.c libft.a -o user_exe
+
+= Test 1 ===================================================
+$> ./user_exe 01
+$> diff -U 3 user_output_test01 test01.output
+
+Diff OK :D
+= Test 2 ===================================================
+$> ./user_exe 02
+$> diff -U 3 user_output_test02 test02.output
+
+Diff OK :D
+= Test 3 ===================================================
+$> ./user_exe 03
+$> diff -U 3 user_output_test03 test03.output
+
+Diff OK :D
+= Test 4 ===================================================
+$> ./user_exe 04
+$> diff -U 3 user_output_test04 test04.output
+
+Diff OK :D
 
 = ft_bzero.c ===================================================================
-Nothing turned in
+$> norminette ft_bzero.c | grep -E '(Error|Warning)'
+$> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_bzero.c main.c libft.a -o user_exe
+
+= Test 1 ===================================================
+$> ./user_exe 01
+$> diff -U 3 user_output_test01 test01.output
+
+Diff OK :D
+= Test 2 ===================================================
+$> ./user_exe 02
+$> diff -U 3 user_output_test02 test02.output
+
+Diff OK :D
 
 = ft_calloc.c ==================================================================
 Nothing turned in
 
 = ft_memcpy.c ==================================================================
-Nothing turned in
+$> norminette ft_memcpy.c | grep -E '(Error|Warning)'
+$> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_memcpy.c main.c libft.a -o user_exe
+
+= Test 1 ===================================================
+$> ./user_exe 01
+$> diff -U 3 user_output_test01 test01.output
+
+Diff OK :D
+= Test 2 ===================================================
+$> ./user_exe 02
+$> diff -U 3 user_output_test02 test02.output
+
+Diff OK :D
+= Test 3 ===================================================
+$> ./user_exe 03
+$> diff -U 3 user_output_test03 test03.output
+
+Diff OK :D
 
 = ft_memccpy.c =================================================================
-Nothing turned in
+$> norminette ft_memccpy.c | grep -E '(Error|Warning)'
+$> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_memccpy.c main.c libft.a -o user_exe
+
+= Test 1 ===================================================
+$> ./user_exe 01
+$> diff -U 3 user_output_test01 test01.output
+
+Diff OK :D
+= Test 2 ===================================================
+$> ./user_exe 02
+$> diff -U 3 user_output_test02 test02.output
+
+Diff OK :D
+= Test 3 ===================================================
+$> ./user_exe 03
+$> diff -U 3 user_output_test03 test03.output
+
+Diff OK :D
+= Test 4 ===================================================
+$> ./user_exe 04
+$> diff -U 3 user_output_test04 test04.output
+
+Diff OK :D
 
 = ft_memmove.c =================================================================
-Nothing turned in
+$> norminette ft_memmove.c | grep -E '(Error|Warning)'
+$> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_memmove.c main.c libft.a -o user_exe
+
+= Test 1 ===================================================
+$> ./user_exe 01
+$> diff -U 3 user_output_test01 test01.output
+
+Diff OK :D
+= Test 2 ===================================================
+$> ./user_exe 02
+$> diff -U 3 user_output_test02 test02.output
+
+Diff OK :D
+= Test 3 ===================================================
+$> ./user_exe 03
+$> diff -U 3 user_output_test03 test03.output
+
+Diff OK :D
+= Test 4 ===================================================
+$> ./user_exe 04
+$> diff -U 3 user_output_test04 test04.output
+
+Diff OK :D
+= Test 5 ===================================================
+$> ./user_exe 05
+$> diff -U 3 user_output_test05 test05.output
+
+Diff OK :D
 
 = ft_memchr.c ==================================================================
-Nothing turned in
+$> norminette ft_memchr.c | grep -E '(Error|Warning)'
+$> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_memchr.c main.c libft.a -o user_exe
+
+= Test 1 ===================================================
+$> ./user_exe 01
+$> diff -U 3 user_output_test01 test01.output
+
+Diff OK :D
+= Test 2 ===================================================
+$> ./user_exe 02
+$> diff -U 3 user_output_test02 test02.output
+
+Diff OK :D
+= Test 3 ===================================================
+$> ./user_exe 03
+$> diff -U 3 user_output_test03 test03.output
+
+Diff OK :D
+= Test 4 ===================================================
+$> ./user_exe 04
+$> diff -U 3 user_output_test04 test04.output
+
+Diff OK :D
+= Test 5 ===================================================
+$> ./user_exe 05
+$> diff -U 3 user_output_test05 test05.output
+
+Diff OK :D
+= Test 6 ===================================================
+$> ./user_exe 06
+$> diff -U 3 user_output_test06 test06.output
+
+Diff OK :D
 
 = ft_memcmp.c ==================================================================
-Nothing turned in
+$> norminette ft_memcmp.c | grep -E '(Error|Warning)'
+$> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_memcmp.c main.c libft.a -o user_exe
+
+= Test 1 ===================================================
+$> ./user_exe 01
+$> diff -U 3 user_output_test01 test01.output
+
+Diff OK :D
+= Test 2 ===================================================
+$> ./user_exe 02
+$> diff -U 3 user_output_test02 test02.output
+
+Diff OK :D
+= Test 3 ===================================================
+$> ./user_exe 03
+$> diff -U 3 user_output_test03 test03.output
+
+Diff OK :D
+= Test 4 ===================================================
+$> ./user_exe 04
+$> diff -U 3 user_output_test04 test04.output
+
+Diff OK :D
+= Test 5 ===================================================
+$> ./user_exe 05
+$> diff -U 3 user_output_test05 test05.output
+
+Diff OK :D
+= Test 6 ===================================================
+$> ./user_exe 06
+$> diff -U 3 user_output_test06 test06.output
+
+Diff OK :D
+= Test 7 ===================================================
+$> ./user_exe 07
+$> diff -U 3 user_output_test07 test07.output
+
+Diff OK :D
+= Test 8 ===================================================
+$> ./user_exe 08
+$> diff -U 3 user_output_test08 test08.output
+
+Diff OK :D
+= Test 9 ===================================================
+$> ./user_exe 09
+$> diff -U 3 user_output_test09 test09.output
+
+Diff OK :D
 
 = ft_strlen.c ==================================================================
-Nothing turned in
+$> norminette ft_strlen.c | grep -E '(Error|Warning)'
+$> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_strlen.c main.c libft.a -o user_exe
+
+= Test 1 ===================================================
+$> ./user_exe 01
+$> diff -U 3 user_output_test01 test01.output
+
+Diff OK :D
+= Test 2 ===================================================
+$> ./user_exe 02
+$> diff -U 3 user_output_test02 test02.output
+
+Diff OK :D
+= Test 3 ===================================================
+$> ./user_exe 03
+$> diff -U 3 user_output_test03 test03.output
+
+Diff OK :D
+= Test 4 ===================================================
+$> ./user_exe 04
+$> diff -U 3 user_output_test04 test04.output
+
+Diff OK :D
+= Test 5 ===================================================
+$> ./user_exe 05
+$> diff -U 3 user_output_test05 test05.output
+
+Diff OK :D
+= Test 6 ===================================================
+$> ./user_exe 06
+$> diff -U 3 user_output_test06 test06.output
+
+Diff OK :D
 
 = ft_strdup.c ==================================================================
-Nothing turned in
+$> norminette ft_strdup.c | grep -E '(Error|Warning)'
+$> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_strdup.c main.c libft.a -o user_exe
+
+= Test 1 ===================================================
+$> ./user_exe 01
+$> diff -U 3 user_output_test01 test01.output
+
+Diff OK :D
 
 = ft_strlcat.c =================================================================
-Nothing turned in
+$> norminette ft_strlcat.c | grep -E '(Error|Warning)'
+$> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_strlcat.c main.c libft.a -o user_exe
+
+= Test 1 ===================================================
+$> ./user_exe 01
+$> diff -U 3 user_output_test01 test01.output
+
+Diff OK :D
+= Test 2 ===================================================
+$> ./user_exe 02
+$> diff -U 3 user_output_test02 test02.output
+
+Diff OK :D
+= Test 3 ===================================================
+$> ./user_exe 03
+$> diff -U 3 user_output_test03 test03.output
+
+Diff OK :D
+= Test 4 ===================================================
+$> ./user_exe 04
+$> diff -U 3 user_output_test04 test04.output
+
+Diff OK :D
+= Test 5 ===================================================
+$> ./user_exe 05
+$> diff -U 3 user_output_test05 test05.output
+
+Diff OK :D
+= Test 6 ===================================================
+$> ./user_exe 06
+$> diff -U 3 user_output_test06 test06.output
+
+Diff OK :D
+= Test 7 ===================================================
+$> ./user_exe 07
+$> diff -U 3 user_output_test07 test07.output
+Binary files /Users/sehypark/42Cadet/Libft/libft-war/tests/Part1_functions/ft_strlcat/user_output_test07 and /Users/sehypark/42Cadet/Libft/libft-war/tests/Part1_functions/ft_strlcat/test07.output differ$
+
+Diff KO :(
+= Test 8 ===================================================
+$> ./user_exe 08
+$> diff -U 3 user_output_test08 test08.output
+
+Diff OK :D
+= Test 9 ===================================================
+$> ./user_exe 09
+$> diff -U 3 user_output_test09 test09.output
+
+Diff OK :D
 
 = ft_strlcpy.c =================================================================
 Nothing turned in
@@ -84,25 +351,289 @@ Nothing turned in
 Nothing turned in
 
 = ft_isalpha.c =================================================================
-Nothing turned in
+$> norminette ft_isalpha.c | grep -E '(Error|Warning)'
+$> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_isalpha.c main.c libft.a -o user_exe
+
+= Test 1 ===================================================
+$> ./user_exe 01
+$> diff -U 3 user_output_test01 test01.output
+
+Diff OK :D
+= Test 2 ===================================================
+$> ./user_exe 02
+$> diff -U 3 user_output_test02 test02.output
+
+Diff OK :D
+= Test 3 ===================================================
+$> ./user_exe 03
+$> diff -U 3 user_output_test03 test03.output
+
+Diff OK :D
+= Test 4 ===================================================
+$> ./user_exe 04
+$> diff -U 3 user_output_test04 test04.output
+
+Diff OK :D
+= Test 5 ===================================================
+$> ./user_exe 05
+$> diff -U 3 user_output_test05 test05.output
+
+Diff OK :D
+= Test 6 ===================================================
+$> ./user_exe 06
+$> diff -U 3 user_output_test06 test06.output
+
+Diff OK :D
+= Test 7 ===================================================
+$> ./user_exe 07
+$> diff -U 3 user_output_test07 test07.output
+
+Diff OK :D
 
 = ft_isdigit.c =================================================================
-Nothing turned in
+$> norminette ft_isdigit.c | grep -E '(Error|Warning)'
+$> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_isdigit.c main.c libft.a -o user_exe
+
+= Test 1 ===================================================
+$> ./user_exe 01
+$> diff -U 3 user_output_test01 test01.output
+
+Diff OK :D
+= Test 2 ===================================================
+$> ./user_exe 02
+$> diff -U 3 user_output_test02 test02.output
+
+Diff OK :D
+= Test 3 ===================================================
+$> ./user_exe 03
+$> diff -U 3 user_output_test03 test03.output
+
+Diff OK :D
+= Test 4 ===================================================
+$> ./user_exe 04
+$> diff -U 3 user_output_test04 test04.output
+
+Diff OK :D
+= Test 5 ===================================================
+$> ./user_exe 05
+$> diff -U 3 user_output_test05 test05.output
+
+Diff OK :D
+= Test 6 ===================================================
+$> ./user_exe 06
+$> diff -U 3 user_output_test06 test06.output
+
+Diff OK :D
+= Test 7 ===================================================
+$> ./user_exe 07
+$> diff -U 3 user_output_test07 test07.output
+
+Diff OK :D
 
 = ft_isalnum.c =================================================================
-Nothing turned in
+$> norminette ft_isalnum.c | grep -E '(Error|Warning)'
+$> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_isalnum.c main.c libft.a -o user_exe
+
+= Test 1 ===================================================
+$> ./user_exe 01
+$> diff -U 3 user_output_test01 test01.output
+
+Diff OK :D
+= Test 2 ===================================================
+$> ./user_exe 02
+$> diff -U 3 user_output_test02 test02.output
+
+Diff OK :D
+= Test 3 ===================================================
+$> ./user_exe 03
+$> diff -U 3 user_output_test03 test03.output
+
+Diff OK :D
+= Test 4 ===================================================
+$> ./user_exe 04
+$> diff -U 3 user_output_test04 test04.output
+
+Diff OK :D
+= Test 5 ===================================================
+$> ./user_exe 05
+$> diff -U 3 user_output_test05 test05.output
+
+Diff OK :D
+= Test 6 ===================================================
+$> ./user_exe 06
+$> diff -U 3 user_output_test06 test06.output
+
+Diff OK :D
+= Test 7 ===================================================
+$> ./user_exe 07
+$> diff -U 3 user_output_test07 test07.output
+
+Diff OK :D
 
 = ft_isascii.c =================================================================
-Nothing turned in
+$> norminette ft_isascii.c | grep -E '(Error|Warning)'
+$> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_isascii.c main.c libft.a -o user_exe
+
+= Test 1 ===================================================
+$> ./user_exe 01
+$> diff -U 3 user_output_test01 test01.output
+
+Diff OK :D
+= Test 2 ===================================================
+$> ./user_exe 02
+$> diff -U 3 user_output_test02 test02.output
+
+Diff OK :D
+= Test 3 ===================================================
+$> ./user_exe 03
+$> diff -U 3 user_output_test03 test03.output
+
+Diff OK :D
+= Test 4 ===================================================
+$> ./user_exe 04
+$> diff -U 3 user_output_test04 test04.output
+
+Diff OK :D
+= Test 5 ===================================================
+$> ./user_exe 05
+$> diff -U 3 user_output_test05 test05.output
+
+Diff OK :D
+= Test 6 ===================================================
+$> ./user_exe 06
+$> diff -U 3 user_output_test06 test06.output
+
+Diff OK :D
+= Test 7 ===================================================
+$> ./user_exe 07
+$> diff -U 3 user_output_test07 test07.output
+
+Diff OK :D
+= Test 8 ===================================================
+$> ./user_exe 08
+$> diff -U 3 user_output_test08 test08.output
+
+Diff OK :D
 
 = ft_isprint.c =================================================================
-Nothing turned in
+$> norminette ft_isprint.c | grep -E '(Error|Warning)'
+$> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_isprint.c main.c libft.a -o user_exe
+
+= Test 1 ===================================================
+$> ./user_exe 01
+$> diff -U 3 user_output_test01 test01.output
+
+Diff OK :D
+= Test 2 ===================================================
+$> ./user_exe 02
+$> diff -U 3 user_output_test02 test02.output
+
+Diff OK :D
+= Test 3 ===================================================
+$> ./user_exe 03
+$> diff -U 3 user_output_test03 test03.output
+
+Diff OK :D
+= Test 4 ===================================================
+$> ./user_exe 04
+$> diff -U 3 user_output_test04 test04.output
+
+Diff OK :D
+= Test 5 ===================================================
+$> ./user_exe 05
+$> diff -U 3 user_output_test05 test05.output
+
+Diff OK :D
+= Test 6 ===================================================
+$> ./user_exe 06
+$> diff -U 3 user_output_test06 test06.output
+
+Diff OK :D
+= Test 7 ===================================================
+$> ./user_exe 07
+$> diff -U 3 user_output_test07 test07.output
+
+Diff OK :D
 
 = ft_toupper.c =================================================================
-Nothing turned in
+$> norminette ft_toupper.c | grep -E '(Error|Warning)'
+$> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_toupper.c main.c libft.a -o user_exe
+
+= Test 1 ===================================================
+$> ./user_exe 01
+$> diff -U 3 user_output_test01 test01.output
+
+Diff OK :D
+= Test 2 ===================================================
+$> ./user_exe 02
+$> diff -U 3 user_output_test02 test02.output
+
+Diff OK :D
+= Test 3 ===================================================
+$> ./user_exe 03
+$> diff -U 3 user_output_test03 test03.output
+
+Diff OK :D
+= Test 4 ===================================================
+$> ./user_exe 04
+$> diff -U 3 user_output_test04 test04.output
+
+Diff OK :D
+= Test 5 ===================================================
+$> ./user_exe 05
+$> diff -U 3 user_output_test05 test05.output
+
+Diff OK :D
+= Test 6 ===================================================
+$> ./user_exe 06
+$> diff -U 3 user_output_test06 test06.output
+
+Diff OK :D
+= Test 7 ===================================================
+$> ./user_exe 07
+$> diff -U 3 user_output_test07 test07.output
+
+Diff OK :D
 
 = ft_tolower.c =================================================================
-Nothing turned in
+$> norminette ft_tolower.c | grep -E '(Error|Warning)'
+$> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_tolower.c main.c libft.a -o user_exe
+
+= Test 1 ===================================================
+$> ./user_exe 01
+$> diff -U 3 user_output_test01 test01.output
+
+Diff OK :D
+= Test 2 ===================================================
+$> ./user_exe 02
+$> diff -U 3 user_output_test02 test02.output
+
+Diff OK :D
+= Test 3 ===================================================
+$> ./user_exe 03
+$> diff -U 3 user_output_test03 test03.output
+
+Diff OK :D
+= Test 4 ===================================================
+$> ./user_exe 04
+$> diff -U 3 user_output_test04 test04.output
+
+Diff OK :D
+= Test 5 ===================================================
+$> ./user_exe 05
+$> diff -U 3 user_output_test05 test05.output
+
+Diff OK :D
+= Test 6 ===================================================
+$> ./user_exe 06
+$> diff -U 3 user_output_test06 test06.output
+
+Diff OK :D
+= Test 7 ===================================================
+$> ./user_exe 07
+$> diff -U 3 user_output_test07 test07.output
+
+Diff OK :D
 
 = Part2_functions ==============================================================
 
@@ -111,12 +642,13 @@ Nothing turned in
 
 = ft_substr.c ==================================================================
 $> norminette ft_substr.c | grep -E '(Error|Warning)'
-
-norminette : command not found
-
 $> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_substr.c main.c libft.a -o user_exe
 
-/root/gitFolder/42/Libft/libft-war/srcs/check_compilation.sh: line 22: clang: command not found
+Undefined symbols for architecture x86_64:
+  "_ft_strlen", referenced from:
+      _ft_substr in ft_substr-b6b6f8.o
+ld: symbol(s) not found for architecture x86_64
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
 
 = ft_strjoin.c =================================================================
 Nothing turned in
@@ -126,12 +658,45 @@ Nothing turned in
 
 = ft_split.c ===================================================================
 $> norminette ft_split.c | grep -E '(Error|Warning)'
-
-norminette : command not found
-
 $> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_split.c main.c libft.a -o user_exe
 
-/root/gitFolder/42/Libft/libft-war/srcs/check_compilation.sh: line 22: clang: command not found
+/Users/sehypark/42Cadet/Libft/libft-war/tests/Part2_functions/ft_split/main.c:39:41: error: incompatible integer to pointer conversion passing 'int' to parameter of type 'char *' [-Werror,-Wint-conversion]
+                if (!(tabstr = ft_split("          ", ' ')))
+                                                      ^~~
+/Users/sehypark/42Cadet/Libft/libft-war/tests/Part2_functions/ft_split/../../../libft.h:40:34: note: passing argument to parameter 'charset' here
+char    **ft_split(char *str, char *charset);
+                                    ^
+/Users/sehypark/42Cadet/Libft/libft-war/tests/Part2_functions/ft_split/main.c:53:114: error: incompatible integer to pointer conversion passing 'int' to parameter of type 'char *' [-Werror,-Wint-conversion]
+                if (!(tabstr = ft_split("lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse", ' ')))
+                                                                                                                               ^~~
+/Users/sehypark/42Cadet/Libft/libft-war/tests/Part2_functions/ft_split/../../../libft.h:40:34: note: passing argument to parameter 'charset' here
+char    **ft_split(char *str, char *charset);
+                                    ^
+/Users/sehypark/42Cadet/Libft/libft-war/tests/Part2_functions/ft_split/main.c:67:128: error: incompatible integer to pointer conversion passing 'int' to parameter of type 'char *' [-Werror,-Wint-conversion]
+                if (!(tabstr = ft_split("   lorem   ipsum dolor     sit amet, consectetur   adipiscing elit. Sed non risus. Suspendisse   ", ' ')))
+                                                                                                                                             ^~~
+/Users/sehypark/42Cadet/Libft/libft-war/tests/Part2_functions/ft_split/../../../libft.h:40:34: note: passing argument to parameter 'charset' here
+char    **ft_split(char *str, char *charset);
+                                    ^
+/Users/sehypark/42Cadet/Libft/libft-war/tests/Part2_functions/ft_split/main.c:81:283: error: incompatible integer to pointer conversion passing 'int' to parameter of type 'char *' [-Werror,-Wint-conversion]
+                if (!(tabstr = ft_split("lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultricies diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi.", 'i')))
+                                                                                                                                                                                                                                                                                                        ^~~
+/Users/sehypark/42Cadet/Libft/libft-war/tests/Part2_functions/ft_split/../../../libft.h:40:34: note: passing argument to parameter 'charset' here
+char    **ft_split(char *str, char *charset);
+                                    ^
+/Users/sehypark/42Cadet/Libft/libft-war/tests/Part2_functions/ft_split/main.c:95:283: error: incompatible integer to pointer conversion passing 'int' to parameter of type 'char *' [-Werror,-Wint-conversion]
+                if (!(tabstr = ft_split("lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse lectus tortor, dignissim sit amet, adipiscing nec, ultricies sed, dolor. Cras elementum ultricies diam. Maecenas ligula massa, varius a, semper congue, euismod non, mi.", 'z')))
+                                                                                                                                                                                                                                                                                                        ^~~
+/Users/sehypark/42Cadet/Libft/libft-war/tests/Part2_functions/ft_split/../../../libft.h:40:34: note: passing argument to parameter 'charset' here
+char    **ft_split(char *str, char *charset);
+                                    ^
+/Users/sehypark/42Cadet/Libft/libft-war/tests/Part2_functions/ft_split/main.c:109:31: error: incompatible integer to pointer conversion passing 'int' to parameter of type 'char *' [-Werror,-Wint-conversion]
+                if (!(tabstr = ft_split("", 'z')))
+                                            ^~~
+/Users/sehypark/42Cadet/Libft/libft-war/tests/Part2_functions/ft_split/../../../libft.h:40:34: note: passing argument to parameter 'charset' here
+char    **ft_split(char *str, char *charset);
+                                    ^
+6 errors generated.
 
 = ft_itoa.c ====================================================================
 Nothing turned in
