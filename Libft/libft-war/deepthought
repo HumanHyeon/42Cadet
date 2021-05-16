@@ -1,0 +1,253 @@
+= Host-specific information ====================================================
+$> hostname; uname -msr
+c10r2s4.42seoul.kr
+Darwin 19.6.0 x86_64
+$> date
+Sun May 16 17:42:55 KST 2021
+$> gcc --version
+Apple clang version 12.0.0 (clang-1200.0.32.28)
+Target: x86_64-apple-darwin19.6.0
+Thread model: posix
+InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+$> clang --version
+Apple clang version 12.0.0 (clang-1200.0.32.28)
+Target: x86_64-apple-darwin19.6.0
+Thread model: posix
+InstalledDir: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin
+
+= libft.h=======================================================================
+$> norminette libft.h | grep -E '(Error|Warning)'
+
+= Compiling libft ==============================================================
+$> make re
+rm -f ft_bzero.o ft_isalnum.o ft_isalpha.o ft_isascii.o ft_isdigit.o ft_isprint.o ft_memccpy.o ft_memchr.o ft_memcmp.o ft_memcmp.o ft_memcpy.o ft_memmove.o ft_memset.o ft_split.o ft_strdup.o ft_strlcat.o ft_strlen.o ft_substr.o ft_tolower.o ft_toupper.o ft_strchr.o ft_strlcpy.o
+rm -f libft.a
+gcc -Wall -Wextra -Werror -c ft_bzero.c -o ft_bzero.o -I libft.h
+gcc -Wall -Wextra -Werror -c ft_isalnum.c -o ft_isalnum.o -I libft.h
+gcc -Wall -Wextra -Werror -c ft_isalpha.c -o ft_isalpha.o -I libft.h
+gcc -Wall -Wextra -Werror -c ft_isascii.c -o ft_isascii.o -I libft.h
+gcc -Wall -Wextra -Werror -c ft_isdigit.c -o ft_isdigit.o -I libft.h
+gcc -Wall -Wextra -Werror -c ft_isprint.c -o ft_isprint.o -I libft.h
+gcc -Wall -Wextra -Werror -c ft_memccpy.c -o ft_memccpy.o -I libft.h
+gcc -Wall -Wextra -Werror -c ft_memchr.c -o ft_memchr.o -I libft.h
+gcc -Wall -Wextra -Werror -c ft_memcmp.c -o ft_memcmp.o -I libft.h
+gcc -Wall -Wextra -Werror -c ft_memcpy.c -o ft_memcpy.o -I libft.h
+gcc -Wall -Wextra -Werror -c ft_memmove.c -o ft_memmove.o -I libft.h
+gcc -Wall -Wextra -Werror -c ft_memset.c -o ft_memset.o -I libft.h
+gcc -Wall -Wextra -Werror -c ft_split.c -o ft_split.o -I libft.h
+gcc -Wall -Wextra -Werror -c ft_strdup.c -o ft_strdup.o -I libft.h
+gcc -Wall -Wextra -Werror -c ft_strlcat.c -o ft_strlcat.o -I libft.h
+gcc -Wall -Wextra -Werror -c ft_strlen.c -o ft_strlen.o -I libft.h
+gcc -Wall -Wextra -Werror -c ft_substr.c -o ft_substr.o -I libft.h
+gcc -Wall -Wextra -Werror -c ft_tolower.c -o ft_tolower.o -I libft.h
+gcc -Wall -Wextra -Werror -c ft_toupper.c -o ft_toupper.o -I libft.h
+gcc -Wall -Wextra -Werror -c ft_strchr.c -o ft_strchr.o -I libft.h
+gcc -Wall -Wextra -Werror -c ft_strlcpy.c -o ft_strlcpy.o -I libft.h
+ft_strlcpy.c:21:10: error: incompatible pointer to integer conversion returning 'void *' from a function with result type 'size_t' (aka 'unsigned long') [-Werror,-Wint-conversion]
+                return (NULL);
+                       ^~~~~~
+1 error generated.
+make: *** [ft_strlcpy.o] Error 1
+
+$> make bonus
+make: *** No rule to make target `bonus'.  Stop.
+
+$> ls -la libft.a
+
+= Part1_functions ==============================================================
+
+= ft_memset.c ==================================================================
+$> norminette ft_memset.c | grep -E '(Error|Warning)'
+$> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_memset.c main.c libft.a -o user_exe
+
+clang: error: no such file or directory: '/Users/sehypark/42Cadet/Libft/libft-war/dirlibft/libft.a'
+
+= ft_bzero.c ===================================================================
+$> norminette ft_bzero.c | grep -E '(Error|Warning)'
+$> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_bzero.c main.c libft.a -o user_exe
+
+clang: error: no such file or directory: '/Users/sehypark/42Cadet/Libft/libft-war/dirlibft/libft.a'
+
+= ft_calloc.c ==================================================================
+Nothing turned in
+
+= ft_memcpy.c ==================================================================
+$> norminette ft_memcpy.c | grep -E '(Error|Warning)'
+$> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_memcpy.c main.c libft.a -o user_exe
+
+clang: error: no such file or directory: '/Users/sehypark/42Cadet/Libft/libft-war/dirlibft/libft.a'
+
+= ft_memccpy.c =================================================================
+$> norminette ft_memccpy.c | grep -E '(Error|Warning)'
+$> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_memccpy.c main.c libft.a -o user_exe
+
+clang: error: no such file or directory: '/Users/sehypark/42Cadet/Libft/libft-war/dirlibft/libft.a'
+
+= ft_memmove.c =================================================================
+$> norminette ft_memmove.c | grep -E '(Error|Warning)'
+$> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_memmove.c main.c libft.a -o user_exe
+
+clang: error: no such file or directory: '/Users/sehypark/42Cadet/Libft/libft-war/dirlibft/libft.a'
+
+= ft_memchr.c ==================================================================
+$> norminette ft_memchr.c | grep -E '(Error|Warning)'
+$> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_memchr.c main.c libft.a -o user_exe
+
+clang: error: no such file or directory: '/Users/sehypark/42Cadet/Libft/libft-war/dirlibft/libft.a'
+
+= ft_memcmp.c ==================================================================
+$> norminette ft_memcmp.c | grep -E '(Error|Warning)'
+$> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_memcmp.c main.c libft.a -o user_exe
+
+clang: error: no such file or directory: '/Users/sehypark/42Cadet/Libft/libft-war/dirlibft/libft.a'
+
+= ft_strlen.c ==================================================================
+$> norminette ft_strlen.c | grep -E '(Error|Warning)'
+$> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_strlen.c main.c libft.a -o user_exe
+
+clang: error: no such file or directory: '/Users/sehypark/42Cadet/Libft/libft-war/dirlibft/libft.a'
+
+= ft_strdup.c ==================================================================
+$> norminette ft_strdup.c | grep -E '(Error|Warning)'
+$> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_strdup.c main.c libft.a -o user_exe
+
+clang: error: no such file or directory: '/Users/sehypark/42Cadet/Libft/libft-war/dirlibft/libft.a'
+
+= ft_strlcat.c =================================================================
+$> norminette ft_strlcat.c | grep -E '(Error|Warning)'
+$> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_strlcat.c main.c libft.a -o user_exe
+
+clang: error: no such file or directory: '/Users/sehypark/42Cadet/Libft/libft-war/dirlibft/libft.a'
+
+= ft_strlcpy.c =================================================================
+$> norminette ft_strlcpy.c | grep -E '(Error|Warning)'
+$> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_strlcpy.c main.c libft.a -o user_exe
+
+clang: error: no such file or directory: '/Users/sehypark/42Cadet/Libft/libft-war/dirlibft/libft.a'
+
+= ft_strchr.c ==================================================================
+$> norminette ft_strchr.c | grep -E '(Error|Warning)'
+$> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_strchr.c main.c libft.a -o user_exe
+
+clang: error: no such file or directory: '/Users/sehypark/42Cadet/Libft/libft-war/dirlibft/libft.a'
+
+= ft_strrchr.c =================================================================
+Nothing turned in
+
+= ft_strnstr.c =================================================================
+Nothing turned in
+
+= ft_strncmp.c =================================================================
+Nothing turned in
+
+= ft_atoi.c ====================================================================
+Nothing turned in
+
+= ft_isalpha.c =================================================================
+$> norminette ft_isalpha.c | grep -E '(Error|Warning)'
+$> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_isalpha.c main.c libft.a -o user_exe
+
+clang: error: no such file or directory: '/Users/sehypark/42Cadet/Libft/libft-war/dirlibft/libft.a'
+
+= ft_isdigit.c =================================================================
+$> norminette ft_isdigit.c | grep -E '(Error|Warning)'
+$> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_isdigit.c main.c libft.a -o user_exe
+
+clang: error: no such file or directory: '/Users/sehypark/42Cadet/Libft/libft-war/dirlibft/libft.a'
+
+= ft_isalnum.c =================================================================
+$> norminette ft_isalnum.c | grep -E '(Error|Warning)'
+$> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_isalnum.c main.c libft.a -o user_exe
+
+clang: error: no such file or directory: '/Users/sehypark/42Cadet/Libft/libft-war/dirlibft/libft.a'
+
+= ft_isascii.c =================================================================
+$> norminette ft_isascii.c | grep -E '(Error|Warning)'
+$> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_isascii.c main.c libft.a -o user_exe
+
+clang: error: no such file or directory: '/Users/sehypark/42Cadet/Libft/libft-war/dirlibft/libft.a'
+
+= ft_isprint.c =================================================================
+$> norminette ft_isprint.c | grep -E '(Error|Warning)'
+$> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_isprint.c main.c libft.a -o user_exe
+
+clang: error: no such file or directory: '/Users/sehypark/42Cadet/Libft/libft-war/dirlibft/libft.a'
+
+= ft_toupper.c =================================================================
+$> norminette ft_toupper.c | grep -E '(Error|Warning)'
+$> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_toupper.c main.c libft.a -o user_exe
+
+clang: error: no such file or directory: '/Users/sehypark/42Cadet/Libft/libft-war/dirlibft/libft.a'
+
+= ft_tolower.c =================================================================
+$> norminette ft_tolower.c | grep -E '(Error|Warning)'
+$> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_tolower.c main.c libft.a -o user_exe
+
+clang: error: no such file or directory: '/Users/sehypark/42Cadet/Libft/libft-war/dirlibft/libft.a'
+
+= Part2_functions ==============================================================
+
+= ft_strmapi.c =================================================================
+Nothing turned in
+
+= ft_substr.c ==================================================================
+$> norminette ft_substr.c | grep -E '(Error|Warning)'
+$> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_substr.c main.c libft.a -o user_exe
+
+clang: error: no such file or directory: '/Users/sehypark/42Cadet/Libft/libft-war/dirlibft/libft.a'
+
+= ft_strjoin.c =================================================================
+Nothing turned in
+
+= ft_strtrim.c =================================================================
+Nothing turned in
+
+= ft_split.c ===================================================================
+$> norminette ft_split.c | grep -E '(Error|Warning)'
+$> clang -Wextra -Wall -Werror -g3 -fsanitize=address ft_split.c main.c libft.a -o user_exe
+
+clang: error: no such file or directory: '/Users/sehypark/42Cadet/Libft/libft-war/dirlibft/libft.a'
+
+= ft_itoa.c ====================================================================
+Nothing turned in
+
+= ft_putchar_fd.c ==============================================================
+Nothing turned in
+
+= ft_putstr_fd.c ===============================================================
+Nothing turned in
+
+= ft_putendl_fd.c ==============================================================
+Nothing turned in
+
+= ft_putnbr_fd.c ===============================================================
+Nothing turned in
+
+= Bonus_functions ==============================================================
+
+= ft_lstnew_bonus.c ============================================================
+Nothing turned in
+
+= ft_lstdelone_bonus.c =========================================================
+Nothing turned in
+
+= ft_lstclear_bonus.c ==========================================================
+Nothing turned in
+
+= ft_lstadd_front_bonus.c ======================================================
+Nothing turned in
+
+= ft_lstadd_back_bonus.c =======================================================
+Nothing turned in
+
+= ft_lstsize_bonus.c ===========================================================
+Nothing turned in
+
+= ft_lstiter_bonus.c ===========================================================
+Nothing turned in
+
+= ft_lstmap_bonus.c ============================================================
+Nothing turned in
+
+= ft_lstlast_bonus.c ===========================================================
+Nothing turned in
