@@ -6,7 +6,7 @@
 /*   By: sehypark <sehypark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/04 15:17:08 by sehypark          #+#    #+#             */
-/*   Updated: 2021/05/04 16:24:09 by sehypark         ###   ########.fr       */
+/*   Updated: 2021/05/18 02:17:40 by sehypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	size_t	j;
 	char	*str;
 
-	if (ft_strlen(s) <= start)
-		return (NULL);
 	allocate_size = ft_strlen(s) - start;
 	if (allocate_size >= len)
 		str = (char *)malloc(sizeof(char) * (len + 1));
@@ -30,10 +28,9 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		return (NULL);
 	i = start;
 	j = 0;
-	while (s[i])
+	while (j != len)
 	{
-		if (j != len)
-			str[j] = s[i];
+		str[j] = s[i];
 		i++;
 		j++;
 	}
