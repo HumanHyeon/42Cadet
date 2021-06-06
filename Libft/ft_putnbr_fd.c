@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sehypark <sehypark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/15 19:05:11 by sehypark          #+#    #+#             */
-/*   Updated: 2021/05/15 19:05:11 by sehypark         ###   ########.fr       */
+/*   Created: 2021/05/30 01:19:24 by sehypark          #+#    #+#             */
+/*   Updated: 2021/05/30 01:19:25 by sehypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memchr(const void *s, int c, size_t n)
+void	ft_putnbr_fd(int n, int fd)
 {
-	size_t i;
-
-	i = 0;
-	while (i < n)
+	if (n == INT_MIN)
+		return (ft_putstr_fd("-2147483648", fd));
+	if (n < 0)
 	{
-		if (*(unsigned char*)(s + i) == (unsigned char)c)
-			return ((void *)(s + i));
-		i++;
+		ft_putchar_fd('-', fd);
+		n = -n;
 	}
-	return (NULL);
+	if (n >= 10)
+		ft_putnbr_fd(n / 10, fd);
+	ft_putchar_fd("0123456789"[n % 10], fd);
 }

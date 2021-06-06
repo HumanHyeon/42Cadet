@@ -18,11 +18,11 @@ static bool	is_space(char c)
 				c == '\f');
 }
 
-int		ft_atoi(const char *str)
+int			ft_atoi(const char *str)
 {
-	int	result;
-	bool	sign;
-	size_t	i;
+	unsigned long long	result;
+	bool				sign;
+	size_t				i;
 
 	result = 0;
 	sign = false;
@@ -40,7 +40,9 @@ int		ft_atoi(const char *str)
 		result = (result * 10) + (str[i] - '0');
 		i++;
 	}
+	if (((result > LONG_MAX) && !sign) || ((result > (LONG_MAX - 1)) && sign))
+		return (sign ? 0 : -1);
 	if (sign)
-		return (-result);
-	return (result);
+		return ((int)result * -1);
+	return ((int)result);
 }

@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-static	bool		is_sperator(char c, char *charset)
+static	bool	is_sperator(char c, char *charset)
 {
 	int	i;
 
@@ -90,7 +90,7 @@ static	char	*make_word(char *str, int *offset, int length)
 	return (word);
 }
 
-char	**ft_split(char *str, char *charset)
+char			**ft_split(char *str, char *charset)
 {
 	char	**dic;
 	int		offset;

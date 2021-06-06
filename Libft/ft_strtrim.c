@@ -1,38 +1,54 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_strtrim2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sehypark <sehypark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/04 15:17:08 by sehypark          #+#    #+#             */
-/*   Updated: 2021/05/18 02:17:40 by sehypark         ###   ########.fr       */
+/*   Created: 2021/05/28 22:05:10 by sehypark          #+#    #+#             */
+/*   Updated: 2021/05/28 22:05:11 by sehypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+static char	*ft_strndup(const char *s1, size_t n)
 {
 	char	*str;
-	size_t	size;
 	size_t	i;
 
-	if (s == NULL)
-		return (NULL);
-	if (ft_strlen(s) <= start)
-		return (ft_strdup(""));
-	size = ft_strlen(s) - start;
-	if (len < size)
-		size = len;
-	if (!(str = (char *)malloc(sizeof(char) * (size + 1))))
+	if (!(str = (char *)malloc(sizeof(char) * (n + 1))))
 		return (NULL);
 	i = 0;
-	while (i < size)
+	while (i < n)
 	{
-		str[i] = s[start + i];
+		str[i] = s1[i];
 		i++;
 	}
 	str[i] = '\0';
 	return (str);
+}
+
+char		*ft_strtrim(char const *s1, char const *set)
+{
+	size_t front;
+	size_t back;
+
+	if (!s1 || !set)
+		return (NULL);
+	front = 0;
+	while (s1[front])
+	{
+		if (!(ft_strchr(set, s1[front])))
+			break ;
+		front++;
+	}
+	back = ft_strlen(s1) - 1;
+	while (back >= front)
+	{
+		if (!(ft_strchr(set, s1[back])))
+			break ;
+		back--;
+	}
+	return (ft_strndup(s1 + front, back - front + 1));
 }
