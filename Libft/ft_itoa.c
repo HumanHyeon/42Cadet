@@ -63,9 +63,8 @@ char			*ft_itoa(int n)
 	i = 0;
 	while (i < n_size)
 	{
-		str[i] = (n % 10) + '0';
+		str[i++] = (n % 10) + '0';
 		n /= 10;
-		i++;
 	}
 	if (sign)
 		str[i - 1] = '-';

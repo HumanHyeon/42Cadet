@@ -79,7 +79,7 @@ static	char	*make_word(char const *str, int *offset, int length)
 	int		i;
 
 	i = 0;
-	if(!(word = (char*)malloc(sizeof(char) * (length + 1))))
+	if (!(word = (char*)malloc(sizeof(char) * (length + 1))))
 		return (NULL);
 	while (i < length)
 	{
@@ -90,6 +90,7 @@ static	char	*make_word(char const *str, int *offset, int length)
 	*offset = *offset + length;
 	return (word);
 }
+
 char			**ft_split(char const *s, char c)
 {
 	char	**dic;
