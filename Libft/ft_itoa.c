@@ -69,5 +69,6 @@ char			*ft_itoa(int n)
 	}
 	if (sign)
 		str[i - 1] = '-';
+	str[i] = '\0';
 	return (ft_strrev(str));
 }

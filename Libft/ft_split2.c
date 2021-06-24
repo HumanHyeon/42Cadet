@@ -12,21 +12,21 @@
 
 #include "libft.h"
 
-static	char	**freeall(char **str, int count)
+static	bool	is_sperator(char c, char *charset)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	while (i < count)
+	while (charset[i] != '\0')
 	{
-		free(str[i]);
+		if (c == charset[i])
+			return (true);
 		i++;
 	}
-	free(str);
-	return (NULL);
+	return (false);
 }
 
-static	int		count_word(char const *str, char c)
+static	int		count_word(char *str, char *charset)
 {
 	int		count;
 	bool	check;
@@ -37,19 +37,19 @@ static	int		count_word(char const *str, char c)
 	i = 0;
 	while (str[i] != '\0')
 	{
-		if (str[i] != c && !check)
+		if (!is_sperator(str[i], charset) && !check)
 		{
 			check = true;
 			count++;
 		}
-		else if (str[i] == c)
+		else if (is_sperator(str[i], charset))
 			check = false;
 		i++;
 	}
 	return (count);
 }
 
-static	int		find_nextword_location(char const *str, char c, int *offset)
+static	int		find_nextword_location(char *str, char *charset, int *offset)
 {
 	int	index;
 	int	length;
@@ -58,14 +58,14 @@ static	int		find_nextword_location(char const *str, char c, int *offset)
 	length = 0;
 	while (str[index] != '\0')
 	{
-		if (str[index] != c)
+		if (!is_sperator(str[index], charset))
 			break ;
 		index++;
 	}
 	*offset = index;
 	while (str[index] != '\0')
 	{
-		if (str[index] == c)
+		if (is_sperator(str[index], charset))
 			break ;
 		length++;
 		index++;
@@ -73,14 +73,13 @@ static	int		find_nextword_location(char const *str, char c, int *offset)
 	return (length);
 }
 
-static	char	*make_word(char const *str, int *offset, int length)
+static	char	*make_word(char *str, int *offset, int length)
 {
 	char	*word;
 	int		i;
 
 	i = 0;
-	if(!(word = (char*)malloc(sizeof(char) * (length + 1))))
-		return (NULL);
+	word = (char*)malloc(sizeof(char) * (length + 1));
 	while (i < length)
 	{
 		word[i] = str[*offset + i];
@@ -90,7 +89,8 @@ static	char	*make_word(char const *str, int *offset, int length)
 	*offset = *offset + length;
 	return (word);
 }
-char			**ft_split(char const *s, char c)
+
+char			**ft_split(char *str, char *charset)
 {
 	char	**dic;
 	int		offset;
@@ -98,19 +98,15 @@ char			**ft_split(char const *s, char c)
 	int		i;
 	int		length;
 
-	if (s == NULL)
-		return (NULL);
-	word = count_word(s, c);
+	word = count_word(str, charset);
 	if ((dic = (char**)malloc(sizeof(char*) * (word + 1))) == NULL)
 		return (NULL);
-	i = 0;
+	i = 0; a
 	offset = 0;
 	while (i < word)
 	{
-		length = find_nextword_location(s, c, &offset);
-		dic[i] = make_word(s, &offset, length);
-		if (dic[i] == NULL)
-			return (freeall(dic, i));
+		length = find_nextword_location(str, charset, &offset);
+		dic[i] = make_word(str, &offset, length);
 		i++;
 	}
 	dic[i] = NULL;

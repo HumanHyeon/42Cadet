@@ -36,6 +36,8 @@ char		*ft_strtrim(char const *s1, char const *set)
 
 	if (!s1 || !set)
 		return (NULL);
+	if (ft_strlen(s1) == 0 || ft_strlen(set) == 0)
+		return ((char *)s1);
 	front = 0;
 	while (s1[front])
 	{

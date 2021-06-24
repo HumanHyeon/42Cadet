@@ -5,25 +5,24 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: sehypark <sehypark@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/10 09:52:07 by sehypark          #+#    #+#             */
-/*   Updated: 2021/05/18 01:11:53 by sehypark         ###   ########.fr       */
+/*   Created: 2021/06/15 17:59:09 by sehypark          #+#    #+#             */
+/*   Updated: 2021/06/15 17:59:10 by sehypark         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static	char	**freeall(char **str, int count)
+static	void	freeall(char **str)
 {
 	int i;
 
 	i = 0;
-	while (i < count)
+	while (str[i] != NULL)
 	{
 		free(str[i]);
 		i++;
 	}
 	free(str);
-	return (NULL);
 }
 
 static	int		count_word(char const *str, char c)
@@ -49,70 +48,79 @@ static	int		count_word(char const *str, char c)
 	return (count);
 }
 
-static	int		find_nextword_location(char const *str, char c, int *offset)
+static	int		find_index(char const *s, char c, int index)
 {
-	int	index;
-	int	length;
-
-	index = *offset;
-	length = 0;
-	while (str[index] != '\0')
+	if (index == 0)
 	{
-		if (str[index] != c)
-			break ;
+		while (s[index] == c)
+			index++;
+		return (index);
+	}
+	while (s[index] != '\0')
+	{
+		if (s[index] == c)
+			break;
 		index++;
 	}
-	*offset = index;
-	while (str[index] != '\0')
-	{
-		if (str[index] == c)
-			break ;
-		length++;
-		index++;
-	}
-	return (length);
+	return (index);
 }
 
-static	char	*make_word(char const *str, int *offset, int length)
+static	char	*make_word(char const *s, char c, int index)
 {
 	char	*word;
+	int		until;
 	int		i;
 
-	i = 0;
-	if(!(word = (char*)malloc(sizeof(char) * (length + 1))))
-		return (NULL);
-	while (i < length)
+	if (index != 0)
+		index++;
+	until = index;
+	while (s[until] != '\0')
 	{
-		word[i] = str[*offset + i];
+		if (s[until] == c)
+			break;
+		until++;
+	}
+	if(!(word = (char *)malloc(sizeof(char *) * (until - index + 1))))
+		return (NULL);
+	i = 0;
+	while (i < until - index + 1)
+	{
+		word[i] = s[index + i];
 		i++;
 	}
-	word[i] = '\0';
-	*offset = *offset + length;
+	word[until - index + 1] = '\0';
 	return (word);
 }
+
 char			**ft_split(char const *s, char c)
 {
-	char	**dic;
-	int		offset;
-	int		word;
+	char	**str;
+	int		count;
+	int		index;
 	int		i;
-	int		length;
 
-	if (s == NULL)
-		return (NULL);
-	word = count_word(s, c);
-	if ((dic = (char**)malloc(sizeof(char*) * (word + 1))) == NULL)
+	count = count_word(s, c);
+	if(!(str = (char **)malloc(sizeof(char *) * (count + 1))))
 		return (NULL);
 	i = 0;
-	offset = 0;
-	while (i < word)
+	while (i <= count)
 	{
-		length = find_nextword_location(s, c, &offset);
-		dic[i] = make_word(s, &offset, length);
-		if (dic[i] == NULL)
-			return (freeall(dic, i));
+		str[i] = NULL;
 		i++;
 	}
-	dic[i] = NULL;
-	return (dic);
+	index = 0;
+	i = 0;
+	while (i < count)
+	{
+		index = find_index(s, c, index);
+		str[i] = make_word(s, c, index);
+		if (str[i] == NULL)
+		{
+			freeall(str);
+			return (NULL);
+		}
+		index++;
+		i++;
+	}
+	return (str);
 }
